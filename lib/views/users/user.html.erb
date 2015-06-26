@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css">
+    <title><% @user.name%></title>
+  </head>
+  <body>
+    <div class="container">
+
+      <!-- begin jumbotron -->
+      <div class="jumbotron">
+        <h1><%= @user.name%></h1>
+        <h3><strong>Neopoints:</strong> <%= @user.neopoints%></h3>
+      </div>
+      <!-- end jumbotron -->
+
+      <div class="row marketing">
+        
+        <!-- begin listing neopets -->
+        <div class="col-lg-6">
+          <h3>Neopets</h3>
+          <% @user.neopets.each do |neopet| %>
+          <ul>
+            <li><img src="../../public/img/neopets/<%= neopet.species %>.jpg"></li>
+            <ul>
+              <li><strong>Name:</strong> <%= neopet.name %></li>
+              <li><strong>Mood:</strong> <%= neopet.mood %></li>
+              <li><strong>Species:</strong> <%= neopet.species %></li>
+              <li><strong>Strength:</strong> <%= neopet.strength %></li>
+              <li><strong>Defence:</strong> <%= neopet.defence %></li>
+              <li><strong>Movement:</strong> <%= neopet.movement %></li>
+              <li><strong>Items:</strong></li>
+              <ul>
+                <!-- begin first neopet's items -->
+                <% neopet.items.each do |item| %>
+                <li><img src="../../public/img/items/<%= item.type%>.jpg"></li>
+                <ul>
+                  <li><strong>Type:</strong> <%= item.format_type%></li>
+                </ul>
+                <% end %>
+              </ul>
+            </ul>
+
+            <% end %>
+          </ul>
+        </div>
+        <!-- end listing neopets -->
+
+        <!-- begin listing items -->
+        <div class="col-lg-6">
+          <h3>Items</h3>
+          <ul>
+            <% @user.items.each do |item| %>
+            <li><img src="../../public/img/items/<%= item.type %>.jpg"></li>
+            <ul>
+              <li><strong>Type:</strong> <%= item.format_type %></li>
+            </ul>
+            <% end %>
+          </ul>
+        </div>
+        <!-- end listing items -->
+
+      </div><!-- end row marketing -->
+    </div><!-- end container -->
+  </body>
+</html> 

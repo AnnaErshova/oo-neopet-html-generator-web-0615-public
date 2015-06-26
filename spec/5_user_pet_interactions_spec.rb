@@ -9,14 +9,14 @@ describe "User - Neopet Interactions" do
       expect(mandy.neopoints).to eq(0)
     end
 
-    it "allows users with at least 250 neopoints to buy a neopoint" do
+    it "allows users with at least 250 neopoints to buy a neopet" do
       initial_pet_number = mandy.neopets.length
       mandy.neopoints = 250
       mandy.buy_neopet
       expect(mandy.neopets.length).to eq(initial_pet_number + 1)
     end
 
-    it "blocks users with less than 250 neopoints from buying a neopoint" do
+    it "blocks users with less than 250 neopoints from buying a neopet" do
       initial_pet_number = mandy.neopets.length
       mandy.neopoints = 249
       mandy.buy_neopet
